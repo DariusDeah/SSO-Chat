@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
-interface IUser {
+interface User {
   uuid: number;
   firstName: string;
   lastName: string;

@@ -1,8 +1,6 @@
 import express from "express";
 import { userController } from "./Entities/User/user.controller";
 import { PROXY_STATE } from "./utils/miniProxy";
-import { valueController } from "./Entities/Value/value.controller";
-import "reflect-metadata";
 class App {
   app: express.Application = express();
   public static instance: App;
@@ -23,7 +21,7 @@ class App {
     this.app.use("/health", (req, res, next) => {
       res.send("<h1>all good</h1>");
     });
-    const controllers = [userController, valueController];
+    const controllers = [userController];
     console.log(PROXY_STATE["router"]);
     this.app.use("/", PROXY_STATE["router"]);
   }

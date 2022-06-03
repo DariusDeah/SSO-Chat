@@ -1,7 +1,7 @@
 import { GET } from "../../Decorators/httpMethods";
 import { PROXY_STATE } from "../../utils/miniProxy";
 import { HTTPMethodsTest } from "../../interfaces/httpMethodsTest.interface";
-import { BaseMethodTest } from "./base-test";
+import { BaseMethodTest } from "./baseMethodTest";
 
 class GETDecoratorTest extends BaseMethodTest {
   constructor() {
