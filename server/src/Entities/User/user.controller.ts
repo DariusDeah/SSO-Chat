@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { BaseController } from "../../base.controller";
 import { API_Config } from "../../config/API.config";
 import { Controller } from "../../Decorators/controller";
 import { GET, MIDDLEWARE } from "../../Decorators/httpMethods";
