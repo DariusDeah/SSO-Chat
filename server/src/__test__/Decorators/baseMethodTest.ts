@@ -1,7 +1,7 @@
 import { HTTPMethodsTest } from "../../interfaces/httpMethodsTest.interface";
 import { AppState, appState } from "../../utils/appState";
 
-export class BaseMethodTest implements HTTPMethodsTest {
+export abstract class BaseMethodTest implements HTTPMethodsTest {
   baseDescribe: string;
   appState: AppState = appState;
   constructor(baseDescribe: string) {
@@ -9,4 +9,8 @@ export class BaseMethodTest implements HTTPMethodsTest {
   }
   protected setCurrentMethodToProxy(): void {}
   protected setCurrentRouteToProxy(): void {}
+  protected runtTests() {
+    this.setCurrentMethodToProxy();
+    this.setCurrentRouteToProxy();
+  }
 }

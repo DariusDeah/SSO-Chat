@@ -3,14 +3,14 @@ import { BaseMethodTest } from "./baseMethodTest";
 
 class GETDecoratorTest extends BaseMethodTest {
   constructor() {
-    super("when the @GET decorator function is called");
-    this.runTests();
+    super("given the @GET decorator function is called");
+    this.runtTests();
   }
   protected setCurrentMethodToProxy(): void {
     describe(this.baseDescribe, () => {
       it("should set the proxy state current http method to GET", () => {
-        GET("GET");
-        expect(this.appState.currentMethod).toEqual("GET");
+        GET("test");
+        expect(this.appState.currentMethod).toMatch("GET");
       });
     });
   }
@@ -21,10 +21,6 @@ class GETDecoratorTest extends BaseMethodTest {
         expect(this.appState.currentRoute).toMatch("test/route");
       });
     });
-  }
-  private runTests() {
-    this.setCurrentMethodToProxy();
-    this.setCurrentRouteToProxy();
   }
 }
 

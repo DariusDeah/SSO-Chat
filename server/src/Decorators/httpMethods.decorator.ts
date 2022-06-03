@@ -1,6 +1,6 @@
 import { appState } from "../utils/appState";
 
-//every factory function outter method will set the current method and route to state
+//every factory function outer method will set the current method and route to state
 //every inner function will append a route and method to state router
 export function GET(route: string) {
   appState.currentMethod = "GET";
