@@ -1,9 +1,7 @@
-import { NextFunction, Request, Response, Router } from "express";
-import { API_Config } from "../../config/API.config";
-import { Controller } from "../../Decorators/controller";
-import { GET, MIDDLEWARE } from "../../Decorators/httpMethods";
+import { NextFunction, Request, Response } from "express";
+import { Controller } from "../../Decorators/controller.decorator";
+import { GET } from "../../Decorators/httpMethods.decorator";
 
-//maybe i can add a controller decorator to the class and define the base route property as well as the router property
 @Controller("User")
 class UserController {
   constructor() {}
@@ -11,7 +9,7 @@ class UserController {
   @GET("users")
   public async getUsers(req: Request, res: Response, next: NextFunction) {
     try {
-      res.send("users test 100%");
+      res.status(200).send("users test 100%");
     } catch (error) {
       next(error);
     }

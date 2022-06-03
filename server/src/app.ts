@@ -1,6 +1,6 @@
 import express from "express";
 import { userController } from "./Entities/User/user.controller";
-import { PROXY_STATE } from "./utils/miniProxy";
+import { appState } from "./utils/appState";
 class App {
   app: express.Application = express();
   public static instance: App;
@@ -22,8 +22,7 @@ class App {
       res.send("<h1>all good</h1>");
     });
     const controllers = [userController];
-    console.log(PROXY_STATE["router"]);
-    this.app.use("/", PROXY_STATE["router"]);
+    this.app.use("/", appState.router);
   }
 }
 export const app: App["app"] = App.getInstance().app;

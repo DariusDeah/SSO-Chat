@@ -1,6 +1,6 @@
-import { PROXY_STATE } from "../utils/miniProxy";
+import { AppState } from "../utils/appState";
 
 export interface HTTPMethodsTest {
   baseDescribe: string;
-  proxy: PROXY_STATE;
+  appState: AppState;
 }

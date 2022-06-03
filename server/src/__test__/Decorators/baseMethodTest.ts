@@ -1,9 +1,9 @@
 import { HTTPMethodsTest } from "../../interfaces/httpMethodsTest.interface";
-import { PROXY_STATE } from "../../utils/miniProxy";
+import { AppState, appState } from "../../utils/appState";
 
 export class BaseMethodTest implements HTTPMethodsTest {
   baseDescribe: string;
-  proxy: PROXY_STATE = PROXY_STATE;
+  appState: AppState = appState;
   constructor(baseDescribe: string) {
     this.baseDescribe = baseDescribe;
   }

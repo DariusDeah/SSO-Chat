@@ -1,6 +1,4 @@
-import { GET } from "../../Decorators/httpMethods";
-import { PROXY_STATE } from "../../utils/miniProxy";
-import { HTTPMethodsTest } from "../../interfaces/httpMethodsTest.interface";
+import { GET } from "../../Decorators/httpMethods.decorator";
 import { BaseMethodTest } from "./baseMethodTest";
 
 class GETDecoratorTest extends BaseMethodTest {
@@ -11,8 +9,8 @@ class GETDecoratorTest extends BaseMethodTest {
   protected setCurrentMethodToProxy(): void {
     describe(this.baseDescribe, () => {
       it("should set the proxy state current http method to GET", () => {
-        GET("test");
-        expect(this.proxy["currentMethod"]).toStrictEqual("GET");
+        GET("GET");
+        expect(this.appState.currentMethod).toEqual("GET");
       });
     });
   }
@@ -20,7 +18,7 @@ class GETDecoratorTest extends BaseMethodTest {
     describe(this.baseDescribe, () => {
       it("should set the proxy state current route to specified route", () => {
         GET("test/route");
-        expect(this.proxy["currentRoute"]).toMatch("test/route");
+        expect(this.appState.currentRoute).toMatch("test/route");
       });
     });
   }
