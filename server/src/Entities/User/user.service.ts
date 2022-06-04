@@ -1,8 +1,4 @@
-export class UserService {
+class UserService {
   constructor() {}
-  getUsers(): { user: string } {
-    return {
-      user: "test",
-    };
-  }
 }
+export const userService: UserService = new UserService();

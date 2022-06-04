@@ -1,7 +1,7 @@
 import { POST } from "../../Decorators/httpMethods.decorator";
-import { BaseMethodTest } from "./baseMethodTest";
+import { BaseMethodDecoratorTest } from "./baseMethodTest";
 
-class POSTDecoratorTest extends BaseMethodTest {
+class PostDecoratorTest extends BaseMethodDecoratorTest {
   constructor() {
     super("given the @POST decorator function is called");
     this.runtTests();
@@ -9,7 +9,7 @@ class POSTDecoratorTest extends BaseMethodTest {
   protected setCurrentMethodToProxy(): void {
     describe(this.baseDescribe, () => {
       it("should set the state current http method to POST", () => {
-        POST("test");
+        this.PostDecoratorMethod("test");
         expect(this.appState.currentMethod).toBe("POST");
       });
     });
@@ -17,10 +17,10 @@ class POSTDecoratorTest extends BaseMethodTest {
   protected setCurrentRouteToProxy(): void {
     describe(this.baseDescribe, () => {
       it("should set the state current route to specified route", () => {
-        POST("test");
+        this.PostDecoratorMethod("test");
         expect(this.appState.currentRoute).toMatch("test");
       });
     });
   }
 }
-new POSTDecoratorTest();
+new PostDecoratorTest();
