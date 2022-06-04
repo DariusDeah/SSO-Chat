@@ -9,15 +9,15 @@ class PostDecoratorTest extends BaseMethodDecoratorTest {
   protected setCurrentMethodToProxy(): void {
     describe(this.baseDescribe, () => {
       it("should set the state current http method to POST", () => {
-        this.PostDecoratorMethod("test");
-        expect(this.appState.currentMethod).toBe("POST");
+        this.PostDecoratorMethod("test/route");
+        expect(this.appState.currentMethod).toMatch("POST");
       });
     });
   }
   protected setCurrentRouteToProxy(): void {
     describe(this.baseDescribe, () => {
       it("should set the state current route to specified route", () => {
-        this.PostDecoratorMethod("test");
+        this.PostDecoratorMethod("test/route");
         expect(this.appState.currentRoute).toMatch("test");
       });
     });

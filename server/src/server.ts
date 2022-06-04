@@ -21,13 +21,6 @@ class Server {
       console.log(startupMessage);
     });
   }
-  private startDB() {
-    const db = mysql2.createPool({
-      user: process.env.user,
-      host: process.env.host,
-      password: process.env.password,
-      database: process.env.database,
-    });
-  }
+  private startDB() {}
 }
 export const server: Server = new Server();

@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Controller } from "../../Decorators/controller.decorator";
 import { GET } from "../../Decorators/httpMethods.decorator";
+import { userService } from "./user.service";
 
 @Controller("User")
 class UserController {
@@ -9,7 +10,6 @@ class UserController {
   @GET("users")
   public async getUsers(req: Request, res: Response, next: NextFunction) {
     try {
-      res.status(200).send("users test 100%");
     } catch (error) {
       next(error);
     }
