@@ -1,6 +1,6 @@
-abstract class Database<T> {
+export abstract class Database<T> {
   constructor() {
-    this.createTable();
+    this.createTable().catch((err) => console.log("db already created"));
   }
   /** define query for creating database table */
   abstract createTable(): Promise<void>;

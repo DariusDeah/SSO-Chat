@@ -1,5 +1,7 @@
 import { IUser } from "./user.model";
 import db from "../../config/database.config";
+import { FieldPacket } from "mysql2";
+import { Database } from "../../database.abstract";
 class User extends Database<IUser> {
   constructor() {
     super();
@@ -17,7 +19,6 @@ class User extends Database<IUser> {
       isActive boolean DEFAULT true
     )
       `;
-    await db.execute(query);
   }
   async dropTable(): Promise<void> {
     const query = `
@@ -29,6 +30,7 @@ class User extends Database<IUser> {
   async create(dataObject: IUser): Promise<IUser | void> {
     const columns = Object.keys(dataObject);
     const values = Object.values(dataObject);
+
     const query = `
     INSERT INTO user
     (
@@ -39,13 +41,15 @@ class User extends Database<IUser> {
     ${values}
     )
     `;
-    db.execute(query);
+    await db.execute(query);
   }
   async selectAll(): Promise<IUser[] | void> {
     const query = `
     SELECT * FROM user
     `;
-    await db.execute(query);
+    const [rows, fields] = await db.execute(query);
+    const results = [rows, fields];
+    // return results;
   }
   async selectById(id: string): Promise<IUser | void> {
     const query = `

@@ -10,6 +10,8 @@ class UserController {
   @GET("users")
   public async getUsers(req: Request, res: Response, next: NextFunction) {
     try {
+      const users = await userService.findAllUsers();
+      res.status(200).send(users);
     } catch (error) {
       next(error);
     }
