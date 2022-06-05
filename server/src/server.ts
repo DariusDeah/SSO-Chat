@@ -1,6 +1,5 @@
 import { app } from "./app";
 import { API_Config } from "./config/API.config";
-import mysql2 from "mysql2";
 import http from "http";
 class Server {
   public static instance: Server;

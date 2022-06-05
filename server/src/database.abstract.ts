@@ -1,14 +1,14 @@
 export abstract class Database<T> {
   constructor() {
-    this.createTable().catch((err) => console.log("db already created"));
+    this.createTable().catch((err) => console.log(err));
   }
   /** define query for creating database table */
   abstract createTable(): Promise<void>;
   abstract dropTable(): Promise<void>;
   abstract alterTable(): Promise<void>;
-  abstract create(dataObject: T): Promise<T | void>;
+  abstract create(dataObject: T): any;
   abstract selectAll(): Promise<T[] | void>;
-  abstract selectById(id: string): Promise<T | void>;
+  abstract selectByUUID(uuid: string): Promise<any>;
   /**provide field to update on data row  */
   abstract update(dataField: string): Promise<T | void>;
   /** provide fields to update on data row */
