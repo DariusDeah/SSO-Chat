@@ -1,6 +1,5 @@
 import { IUser } from "./user.model";
 import db from "../../config/database.config";
-import { FieldPacket } from "mysql2";
 import { Database } from "../../database.abstract";
 class User extends Database<IUser> {
   constructor() {
@@ -19,6 +18,7 @@ class User extends Database<IUser> {
       isActive boolean DEFAULT true
     )
       `;
+    await db.execute(query);
   }
   async dropTable(): Promise<void> {
     const query = `
@@ -27,35 +27,38 @@ class User extends Database<IUser> {
     await db.execute(query);
   }
   async alterTable(): Promise<void> {}
-  async create(dataObject: IUser): Promise<IUser | void> {
-    const columns = Object.keys(dataObject);
+  async create(dataObject: IUser) {
+    const columns = Object.keys(dataObject).join(", ");
     const values = Object.values(dataObject);
+    const placeholder = "?".repeat(values.length).split("").join(", ");
 
     const query = `
     INSERT INTO user
     (
-    ${columns.join(", ")}
-    ) 
-    Values
-    (
-    ${values}
+      ${columns}
     )
-    `;
-    await db.execute(query);
+    VALUES
+    (
+      ${placeholder}
+    )
+     `;
+    const [rows, fields] = await db.execute(query, values);
+    return rows;
   }
-  async selectAll(): Promise<IUser[] | void> {
+  async selectAll(): Promise<any> {
     const query = `
-    SELECT * FROM user
+    SELECT firstName,lastName,email,uuid FROM user
     `;
     const [rows, fields] = await db.execute(query);
-    const results = [rows, fields];
-    // return results;
+    return rows;
   }
-  async selectById(id: string): Promise<IUser | void> {
+  async selectByUUID(uuid: string): Promise<any> {
     const query = `
-    SELECT * FROM user WHERE id = ${id} 
+    SELECT firstName,lastName,email,uuid FROM user WHERE uuid = "${uuid}"
     `;
-    await db.execute(query);
+    console.log(query);
+    const [rows, fields] = await db.execute(query);
+    return rows;
   }
   async update(dataField: string): Promise<IUser | void> {}
   async updates(...dataFields: string[]): Promise<IUser | void> {}
