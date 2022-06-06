@@ -1,4 +1,4 @@
-import { BaseMethodDecoratorTest } from "./baseMethodTest";
+import { BaseMethodDecoratorTest } from "../baseMethodTest";
 
 class DeleteDecoratorTest extends BaseMethodDecoratorTest {
   constructor() {

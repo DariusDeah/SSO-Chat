@@ -1,6 +1,6 @@
 import express, { IRouter } from "express";
 import { API_Config } from "../config/API.config";
-import { State } from "../interfaces/appState.interface";
+import { State } from "../interfaces/state.interface";
 
 export class AppState implements State {
   private _services: any[] = [];

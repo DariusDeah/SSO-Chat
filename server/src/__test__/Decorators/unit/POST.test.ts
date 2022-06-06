@@ -1,5 +1,5 @@
-import { POST } from "../../Decorators/httpMethods.decorator";
-import { BaseMethodDecoratorTest } from "./baseMethodTest";
+import { POST } from "../../../Decorators/httpMethods.decorator";
+import { BaseMethodDecoratorTest } from "../baseMethodTest";
 
 class PostDecoratorTest extends BaseMethodDecoratorTest {
   constructor() {
