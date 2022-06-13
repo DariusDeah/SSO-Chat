@@ -4,6 +4,6 @@ export interface IUser {
   lastName: string;
   googleId?: string;
   email: string;
-  password: string;
+  password?: string;
   isActive: boolean;
 }

@@ -2,15 +2,15 @@ import { app } from "./app";
 import { API_Config } from "./config/API.config";
 import http from "http";
 class Server {
+  constructor() {
+    this.startServer();
+  }
   public static instance: Server;
   public static getInstance(): Server {
     if (this.instance === null) {
       return new Server();
     }
     return this.instance;
-  }
-  constructor() {
-    this.startServer();
   }
   private startServer(): void {
     const PORT: number = API_Config.port;
@@ -20,6 +20,5 @@ class Server {
       console.log(startupMessage);
     });
   }
-  private startDB() {}
 }
-export const server: Server = new Server();
+export const server: Server = Server.getInstance();

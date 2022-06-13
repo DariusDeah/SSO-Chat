@@ -30,7 +30,7 @@ class User extends Database<IUser> {
   async create(dataObject: IUser) {
     const columns = Object.keys(dataObject).join(", ");
     const values = Object.values(dataObject);
-    const placeholder = "?".repeat(values.length).split("").join(", ");
+    const placeholders = "?".repeat(values.length).split("").join(", ");
 
     const query = `
     INSERT INTO user
@@ -39,7 +39,7 @@ class User extends Database<IUser> {
     )
     VALUES
     (
-      ${placeholder}
+      ${placeholders}
     )
      `;
     const [rows, fields] = await db.execute(query, values);
